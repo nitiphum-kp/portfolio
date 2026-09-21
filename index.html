@@ -28,9 +28,11 @@
     .custom-scrollbar::-webkit-scrollbar { width: 6px; }
     .custom-scrollbar::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.6); }
     .custom-scrollbar::-webkit-scrollbar-thumb { background: #334e68; border-radius: 4px; }
+    body.lang-th [data-lang="en"] { display: none !important; }
+    body.lang-en [data-lang="th"] { display: none !important; }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-blue-600 selection:text-white transition-colors duration-300">
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-blue-600 selection:text-white transition-colors duration-300 lang-th">
 
   <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-blue-600 z-50 transition-all duration-150" style="width: 0%"></div>
 
@@ -40,19 +42,29 @@
         <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 to-slate-800 flex items-center justify-center font-bold text-white shadow-lg border border-slate-700 group-hover:border-blue-500 transition-colors">NK</div>
         <div class="flex flex-col">
           <span class="font-bold text-lg text-slate-100 tracking-tight leading-none group-hover:text-blue-400 transition-colors">Nitiphum K.</span>
-          <span class="text-xs text-slate-400 font-medium tracking-wider uppercase mt-1">Legal Consultant</span>
+          <span class="text-xs text-slate-400 font-medium tracking-wider uppercase mt-1">
+            <span data-lang="th">ที่ปรึกษากฎหมาย</span><span data-lang="en">Legal Consultant</span>
+          </span>
         </div>
       </a>
 
       <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-        <a href="#about" class="hover:text-blue-400 transition-colors py-1">About</a>
-        <a href="#work" class="hover:text-blue-400 transition-colors py-1">Work & Scope</a>
-        <a href="#experience" class="hover:text-blue-400 transition-colors py-1">Experience</a>
-        <a href="#credentials" class="hover:text-blue-400 transition-colors py-1">Credentials</a>
-        <a href="#contact" class="px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold transition-all shadow-md shadow-blue-900/20 border border-blue-400/30">Contact Me</a>
+        <a href="#about" class="hover:text-blue-400 transition-colors py-1"><span data-lang="th">เกี่ยวกับ</span><span data-lang="en">About</span></a>
+        <a href="#work" class="hover:text-blue-400 transition-colors py-1"><span data-lang="th">ขอบเขตบริการ</span><span data-lang="en">Work & Scope</span></a>
+        <a href="#experience" class="hover:text-blue-400 transition-colors py-1"><span data-lang="th">ประสบการณ์</span><span data-lang="en">Experience</span></a>
+        <a href="#credentials" class="hover:text-blue-400 transition-colors py-1"><span data-lang="th">คุณวุฒิ</span><span data-lang="en">Credentials</span></a>
+        <button type="button" id="lang-toggle-desktop" class="lang-toggle-btn flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-slate-900 border border-slate-700/80 text-slate-300 hover:text-white hover:border-blue-500 text-xs font-semibold transition-all" aria-label="Switch language / สลับภาษา">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.5 5.5s-3.5 4-8.5 4m0 0h9m-9 0v-4"></path></svg>
+          <span class="lang-toggle-label" data-when-th="English" data-when-en="ไทย">English</span>
+        </button>
+        <a href="#contact" class="px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold transition-all shadow-md shadow-blue-900/20 border border-blue-400/30"><span data-lang="th">ติดต่อ</span><span data-lang="en">Contact Me</span></a>
       </nav>
 
       <div class="flex items-center gap-3 md:hidden">
+        <button type="button" id="lang-toggle-mobile" class="lang-toggle-btn flex items-center gap-1.5 px-3 py-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-white text-xs font-semibold" aria-label="Switch language / สลับภาษา">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.5 5.5s-3.5 4-8.5 4m0 0h9m-9 0v-4"></path></svg>
+          <span class="lang-toggle-label" data-when-th="EN" data-when-en="TH">EN</span>
+        </button>
         <button id="mobile-menu-btn" aria-label="Toggle Menu" class="p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-white">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
         </button>
@@ -60,11 +72,11 @@
     </div>
 
     <div id="mobile-menu" class="hidden md:hidden border-b border-slate-800 bg-slate-950/95 px-6 py-6 space-y-4">
-      <a href="#about" class="mobile-nav-link block text-base text-slate-300 hover:text-blue-400 font-medium py-2">About Profile</a>
-      <a href="#work" class="mobile-nav-link block text-base text-slate-300 hover:text-blue-400 font-medium py-2">Selected Work</a>
-      <a href="#experience" class="mobile-nav-link block text-base text-slate-300 hover:text-blue-400 font-medium py-2">Experience Timeline</a>
-      <a href="#credentials" class="mobile-nav-link block text-base text-slate-300 hover:text-blue-400 font-medium py-2">Credentials & Skills</a>
-      <a href="#contact" class="mobile-nav-link block text-center w-full py-3 mt-4 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-semibold">Contact Directly</a>
+      <a href="#about" class="mobile-nav-link block text-base text-slate-300 hover:text-blue-400 font-medium py-2"><span data-lang="th">เกี่ยวกับฉัน</span><span data-lang="en">About Profile</span></a>
+      <a href="#work" class="mobile-nav-link block text-base text-slate-300 hover:text-blue-400 font-medium py-2"><span data-lang="th">ผลงานเด่น</span><span data-lang="en">Selected Work</span></a>
+      <a href="#experience" class="mobile-nav-link block text-base text-slate-300 hover:text-blue-400 font-medium py-2"><span data-lang="th">เส้นทางประสบการณ์</span><span data-lang="en">Experience Timeline</span></a>
+      <a href="#credentials" class="mobile-nav-link block text-base text-slate-300 hover:text-blue-400 font-medium py-2"><span data-lang="th">คุณวุฒิและทักษะ</span><span data-lang="en">Credentials & Skills</span></a>
+      <a href="#contact" class="mobile-nav-link block text-center w-full py-3 mt-4 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-semibold"><span data-lang="th">ติดต่อโดยตรง</span><span data-lang="en">Contact Directly</span></a>
     </div>
   </header>
 
@@ -74,14 +86,15 @@
         <div class="lg:col-span-7 space-y-6 text-left">
           <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-900 border border-slate-700/80 text-blue-400 text-xs font-semibold uppercase tracking-wider">
             <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-            Licensed Thai Lawyer & Business Legal Advisor
+            <span data-lang="th">ทนายความและที่ปรึกษากฎหมายธุรกิจที่ได้รับใบอนุญาต</span><span data-lang="en">Licensed Thai Lawyer & Business Legal Advisor</span>
           </div>
           <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
             นิติภูมิ กงเพชร <br>
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-slate-200 to-blue-200">Nitiphum Kongphet</span>
           </h1>
           <p class="text-base sm:text-lg text-slate-300 font-light leading-relaxed max-w-2xl">
-            ที่ปรึกษาทางกฎหมายธุรกิจ (Business Legal Consultant) ผู้เชี่ยวชาญด้านการจดทะเบียนนิติบุคคล กรมพัฒนาธุรกิจการค้า (DBD) และกรมสรรพากร ร่างและตรวจสัญญาธุรกิจ 2 ภาษา (ไทย-อังกฤษ) งานรับรองเอกสาร Notarial Services และการขอ Work Permit / BOI
+            <span data-lang="th">ที่ปรึกษาทางกฎหมายธุรกิจ (Business Legal Consultant) ผู้เชี่ยวชาญด้านการจดทะเบียนนิติบุคคล กรมพัฒนาธุรกิจการค้า (DBD) และกรมสรรพากร ร่างและตรวจสัญญาธุรกิจ 2 ภาษา (ไทย-อังกฤษ) งานรับรองเอกสาร Notarial Services และการขอ Work Permit / BOI</span>
+            <span data-lang="en">Business Legal Consultant specializing in corporate registration with the Department of Business Development (DBD) and the Revenue Department, bilingual (Thai-English) contract drafting and review, notarial services, and Work Permit / BOI applications.</span>
           </p>
           <div class="grid grid-cols-3 gap-4 pt-2 border-y border-slate-800/80 py-4 max-w-xl">
             <div>
@@ -90,19 +103,19 @@
             </div>
             <div>
               <p class="text-2xl font-bold text-blue-400">795</p>
-              <p class="text-xs text-slate-400 mt-0.5">TOEIC Score</p>
+              <p class="text-xs text-slate-400 mt-0.5"><span data-lang="th">คะแนน TOEIC</span><span data-lang="en">TOEIC Score</span></p>
             </div>
             <div>
-              <p class="text-2xl font-bold text-white">Bar License</p>
-              <p class="text-xs text-slate-400 mt-0.5">Thai Lawyer's License</p>
+              <p class="text-2xl font-bold text-white"><span data-lang="th">ใบอนุญาตว่าความ</span><span data-lang="en">Bar License</span></p>
+              <p class="text-xs text-slate-400 mt-0.5"><span data-lang="th">ใบอนุญาตทนายความ</span><span data-lang="en">Thai Lawyer's License</span></p>
             </div>
           </div>
           <div class="flex flex-wrap items-center gap-4 pt-2">
             <a href="#work" class="px-7 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-all shadow-lg shadow-blue-900/30 flex items-center gap-2 group">
-              <span>ดูขอบเขตบริการและผลงาน</span>
+              <span data-lang="th">ดูขอบเขตบริการและผลงาน</span><span data-lang="en">View Scope of Service & Work</span>
               <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
             </a>
-            <a href="#contact" class="px-7 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 hover:text-white font-semibold text-sm border border-slate-700 transition-all">ติดต่อปรึกษากฎหมาย</a>
+            <a href="#contact" class="px-7 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 hover:text-white font-semibold text-sm border border-slate-700 transition-all"><span data-lang="th">ติดต่อปรึกษากฎหมาย</span><span data-lang="en">Consult a Lawyer</span></a>
           </div>
         </div>
 
@@ -112,9 +125,9 @@
               <div class="aspect-[4/5] rounded-xl overflow-hidden bg-slate-950 relative border border-slate-800">
                 <img src="IMG_9949_11zon_11zon.jpg" alt="Nitiphum Kongphet Profile Photo" class="w-full h-full object-cover object-top">
                 <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent p-6 pt-16 flex flex-col justify-end">
-                  <span class="inline-block px-3 py-1 bg-blue-950/80 border border-blue-800 text-blue-300 text-xs font-semibold rounded-md w-fit mb-1">Bar Licensed Attorney</span>
+                  <span class="inline-block px-3 py-1 bg-blue-950/80 border border-blue-800 text-blue-300 text-xs font-semibold rounded-md w-fit mb-1"><span data-lang="th">ทนายความที่ได้รับใบอนุญาต</span><span data-lang="en">Bar Licensed Attorney</span></span>
                   <h3 class="text-xl font-bold text-white">Nitiphum Kongphet</h3>
-                  <p class="text-xs text-slate-400">Legal Advisor & Business Regulatory Specialist</p>
+                  <p class="text-xs text-slate-400"><span data-lang="th">ที่ปรึกษากฎหมายและผู้เชี่ยวชาญด้านกฎระเบียบธุรกิจ</span><span data-lang="en">Legal Advisor & Business Regulatory Specialist</span></p>
                 </div>
               </div>
             </div>
@@ -126,9 +139,9 @@
     <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-950 border-b border-slate-800/60">
       <div class="max-w-6xl mx-auto space-y-12">
         <div class="text-center max-w-3xl mx-auto space-y-3">
-          <h2 class="text-xs font-bold text-blue-400 uppercase tracking-widest">About Profile</h2>
-          <p class="text-3xl sm:text-4xl font-bold text-white">ประวัติ และแนวทางการทำงาน</p>
-          <p class="text-slate-400 text-sm sm:text-base">ยึดความถูกต้องตามข้อกฎหมาย ป้องกันความเสี่ยงทางธุรกิจ และอำนวยความสะดวกแก่นิติบุคคล</p>
+          <h2 class="text-xs font-bold text-blue-400 uppercase tracking-widest"><span data-lang="th">เกี่ยวกับ</span><span data-lang="en">About Profile</span></h2>
+          <p class="text-3xl sm:text-4xl font-bold text-white"><span data-lang="th">ประวัติ และแนวทางการทำงาน</span><span data-lang="en">Profile & Working Approach</span></p>
+          <p class="text-slate-400 text-sm sm:text-base"><span data-lang="th">ยึดความถูกต้องตามข้อกฎหมาย ป้องกันความเสี่ยงทางธุรกิจ และอำนวยความสะดวกแก่นิติบุคคล</span><span data-lang="en">Committed to legal accuracy, business risk prevention, and facilitating corporate compliance.</span></p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
@@ -136,22 +149,24 @@
             <div class="space-y-4">
               <h3 class="text-xl font-bold text-white border-b border-slate-800 pb-3 flex items-center gap-2">
                 <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-                ประวัติส่วนบุคคล & ประสบการณ์
+                <span data-lang="th">ประวัติส่วนบุคคล & ประสบการณ์</span><span data-lang="en">Background & Experience</span>
               </h3>
               <p class="text-slate-300 text-sm leading-relaxed">
-                นิติภูมิ กงเพชร สำเร็จการศึกษานิติศาสตรบัณฑิต (LL.B.) จากมหาวิทยาลัยแม่ฟ้าหลวง และได้รับใบอนุญาตให้เป็นทนายความ (Thai Lawyer's License) ปัจจุบันดำรงตำแหน่งที่ปรึกษากฎหมายธุรกิจ ที่ Matthew Anawat Legal Advisor (Thailand) Co., Ltd.
+                <span data-lang="th">นิติภูมิ กงเพชร สำเร็จการศึกษานิติศาสตรบัณฑิต (LL.B.) จากมหาวิทยาลัยแม่ฟ้าหลวง และได้รับใบอนุญาตให้เป็นทนายความ (Thai Lawyer's License) ปัจจุบันดำรงตำแหน่งที่ปรึกษากฎหมายธุรกิจ ที่ Matthew Anawat Legal Advisor (Thailand) Co., Ltd.</span>
+                <span data-lang="en">Nitiphum Kongphet holds a Bachelor of Laws (LL.B.) from Mae Fah Luang University and is a licensed Thai lawyer (Bar License). He currently serves as a Business Legal Consultant at Matthew Anawat Legal Advisor (Thailand) Co., Ltd.</span>
               </p>
               <p class="text-slate-300 text-sm leading-relaxed">
-                มีความเชี่ยวชาญการให้บริการทางกฎหมายแก่องค์กรธุรกิจทั้งไทยและต่างประเทศ ตั้งแต่กระบวนการยื่นจดทะเบียนบริษัท  กรมพัฒนาธุรกิจการค้า (DBD) กรมสรรพากร กรมการกงสุล การตรวจและร่างสัญญาธุรกิจหลากหลายประเภท การแปลเอกสารกฎหมายและเอกสารอื่นๆไทย-อังกฤษ งานรับรองลายมือชื่อ Notarial Services ตลอดจนการยื่นขอใบอนุญาตทำงาน (Work Permit) และการขอรับการส่งเสริมการลงทุน (BOI) และการยื่นขอ ใบอนุญาตประกอบธุรกิจคนต่างด้าว FBL
+                <span data-lang="th">มีความเชี่ยวชาญการให้บริการทางกฎหมายแก่องค์กรธุรกิจทั้งไทยและต่างประเทศ ตั้งแต่กระบวนการยื่นจดทะเบียนบริษัท  กรมพัฒนาธุรกิจการค้า (DBD) กรมสรรพากร กรมการกงสุล การตรวจและร่างสัญญาธุรกิจหลากหลายประเภท การแปลเอกสารกฎหมายและเอกสารอื่นๆไทย-อังกฤษ งานรับรองลายมือชื่อ Notarial Services ตลอดจนการยื่นขอใบอนุญาตทำงาน (Work Permit) และการขอรับการส่งเสริมการลงทุน (BOI) และการยื่นขอ ใบอนุญาตประกอบธุรกิจคนต่างด้าว FBL</span>
+                <span data-lang="en">He specializes in legal services for Thai and international businesses — from company registration with the Department of Business Development (DBD), the Revenue Department, and the Department of Consular Affairs, to reviewing and drafting a wide range of business contracts, translating legal and other documents between Thai and English, notarial services, Work Permit applications, BOI investment promotion, and Foreign Business License (FBL) applications.</span>
               </p>
             </div>
             <div class="grid grid-cols-2 gap-4 pt-4 border-t border-slate-800">
               <div class="p-3.5 bg-slate-950/60 rounded-xl border border-slate-800/80">
-                <span class="block text-xs font-semibold text-blue-400 uppercase">ภาษาอังกฤษสื่อสาร</span>
+                <span class="block text-xs font-semibold text-blue-400 uppercase"><span data-lang="th">ภาษาอังกฤษสื่อสาร</span><span data-lang="en">English Proficiency</span></span>
                 <span class="text-sm font-bold text-white mt-1 block">TOEIC 795 Score</span>
               </div>
               <div class="p-3.5 bg-slate-950/60 rounded-xl border border-slate-800/80">
-                <span class="block text-xs font-semibold text-blue-400 uppercase">ขอบเขตบริการ</span>
+                <span class="block text-xs font-semibold text-blue-400 uppercase"><span data-lang="th">ขอบเขตบริการ</span><span data-lang="en">Scope of Service</span></span>
                 <span class="text-sm font-bold text-white mt-1 block">Corporate & Foreigner Business</span>
               </div>
             </div>
@@ -166,19 +181,19 @@
               <ul class="space-y-3 text-xs text-slate-300">
                 <li class="flex items-start gap-3 p-2.5 rounded-lg bg-slate-950/50 border border-slate-800">
                   <div class="w-2 h-2 rounded-full bg-blue-500 mt-1.5 flex-shrink-0"></div>
-                  <div><strong class="text-slate-100 font-semibold block text-sm">Accuracy & Compliance</strong>แม่นยำในข้อกฎหมายและระเบียบปฏิบัติของภาครัฐ (DBD, สรรพากร, กรมการกงสุล)</div>
+                  <div><strong class="text-slate-100 font-semibold block text-sm">Accuracy & Compliance</strong><span data-lang="th">แม่นยำในข้อกฎหมายและระเบียบปฏิบัติของภาครัฐ (DBD, สรรพากร, กรมการกงสุล)</span><span data-lang="en">Precise handling of laws and government procedures (DBD, Revenue Department, Department of Consular Affairs).</span></div>
                 </li>
                 <li class="flex items-start gap-3 p-2.5 rounded-lg bg-slate-950/50 border border-slate-800">
                   <div class="w-2 h-2 rounded-full bg-blue-500 mt-1.5 flex-shrink-0"></div>
-                  <div><strong class="text-slate-100 font-semibold block text-sm">Risk Mitigation in Contracts</strong>ร่างและตรวจสัญญาโดยวิเคราะห์ความเสี่ยงซ่อนเร้น ปิดช่องโหว่ทางกฎหมาย</div>
+                  <div><strong class="text-slate-100 font-semibold block text-sm">Risk Mitigation in Contracts</strong><span data-lang="th">ร่างและตรวจสัญญาโดยวิเคราะห์ความเสี่ยงซ่อนเร้น ปิดช่องโหว่ทางกฎหมาย</span><span data-lang="en">Drafting and reviewing contracts by identifying hidden risks and closing legal loopholes.</span></div>
                 </li>
                 <li class="flex items-start gap-3 p-2.5 rounded-lg bg-slate-950/50 border border-slate-800">
                   <div class="w-2 h-2 rounded-full bg-blue-500 mt-1.5 flex-shrink-0"></div>
-                  <div><strong class="text-slate-100 font-semibold block text-sm">Seamless Dual-Language Execution</strong>บริการ 2 ภาษา (ไทย-อังกฤษ) สะดวกสำหรับบริษัทข้ามชาติและนักลงทุนต่างชาติ</div>
+                  <div><strong class="text-slate-100 font-semibold block text-sm">Seamless Dual-Language Execution</strong><span data-lang="th">บริการ 2 ภาษา (ไทย-อังกฤษ) สะดวกสำหรับบริษัทข้ามชาติและนักลงทุนต่างชาติ</span><span data-lang="en">Bilingual (Thai-English) service, convenient for multinational companies and foreign investors.</span></div>
                 </li>
                 <li class="flex items-start gap-3 p-2.5 rounded-lg bg-slate-950/50 border border-slate-800">
                   <div class="w-2 h-2 rounded-full bg-blue-500 mt-1.5 flex-shrink-0"></div>
-                  <div><strong class="text-slate-100 font-semibold block text-sm">Client Confidentiality Standard</strong>ยึดมั่นในจรรยาบรรณวิชาชีพและรักษาความลับของลูกค้าอย่างเคร่งครัด</div>
+                  <div><strong class="text-slate-100 font-semibold block text-sm">Client Confidentiality Standard</strong><span data-lang="th">ยึดมั่นในจรรยาบรรณวิชาชีพและรักษาความลับของลูกค้าอย่างเคร่งครัด</span><span data-lang="en">Committed to professional ethics and strict client confidentiality.</span></div>
                 </li>
               </ul>
             </div>
@@ -191,77 +206,95 @@
       <div class="max-w-6xl mx-auto space-y-10">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div class="space-y-2">
-            <h2 class="text-xs font-bold text-blue-400 uppercase tracking-widest">Selected Work</h2>
-            <p class="text-3xl font-bold text-white">ขอบเขตบริการและผลงานวิชาชีพ</p>
-            <p class="text-slate-400 text-sm">คลิกเพื่อดูรายละเอียดขอบเขตการดำเนินการในแต่ละประเภท</p>
+            <h2 class="text-xs font-bold text-blue-400 uppercase tracking-widest"><span data-lang="th">ผลงานคัดสรร</span><span data-lang="en">Selected Work</span></h2>
+            <p class="text-3xl font-bold text-white"><span data-lang="th">ขอบเขตบริการและผลงานวิชาชีพ</span><span data-lang="en">Scope of Service & Professional Work</span></p>
+            <p class="text-slate-400 text-sm"><span data-lang="th">คลิกเพื่อดูรายละเอียดขอบเขตการดำเนินการในแต่ละประเภท</span><span data-lang="en">Click to view the detailed scope of work for each category.</span></p>
           </div>
           <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 text-slate-400 text-xs max-w-md flex items-center gap-2.5">
             <svg class="w-5 h-5 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-            <span><strong>Client Privacy Protected:</strong> เพื่อปฏิบัติตามจรรยาบรรณวิชาชีพ ข้อมูลองค์กรและชื่อบริษัทจะถูกจัดเก็บเป็นความลับ</span>
+            <span><strong>Client Privacy Protected:</strong> <span data-lang="th">เพื่อปฏิบัติตามจรรยาบรรณวิชาชีพ ข้อมูลองค์กรและชื่อบริษัทจะถูกจัดเก็บเป็นความลับ</span><span data-lang="en">In compliance with professional ethics, organization and company details are kept strictly confidential.</span></span>
           </div>
         </div>
 
         <div class="flex flex-wrap gap-2 border-b border-slate-800 pb-4">
-          <button class="work-filter-btn px-4 py-2 rounded-lg text-xs font-medium transition-all bg-blue-600 text-white shadow-md" data-filter="all">ทั้งหมด (All Scope)</button>
-          <button class="work-filter-btn px-4 py-2 rounded-lg text-xs font-medium transition-all bg-slate-900 border border-slate-800 text-slate-400 hover:text-white" data-filter="dbd">Corporate & DBD</button>
-          <button class="work-filter-btn px-4 py-2 rounded-lg text-xs font-medium transition-all bg-slate-900 border border-slate-800 text-slate-400 hover:text-white" data-filter="contracts">Contracts Review</button>
-          <button class="work-filter-btn px-4 py-2 rounded-lg text-xs font-medium transition-all bg-slate-900 border border-slate-800 text-slate-400 hover:text-white" data-filter="translation">Translation & Notary</button>
-          <button class="work-filter-btn px-4 py-2 rounded-lg text-xs font-medium transition-all bg-slate-900 border border-slate-800 text-slate-400 hover:text-white" data-filter="boi">BOI & Regulatory</button>
+          <button class="work-filter-btn px-4 py-2 rounded-lg text-xs font-medium transition-all bg-blue-600 text-white shadow-md" data-filter="all"><span data-lang="th">ทั้งหมด</span><span data-lang="en">All Scope</span></button>
+          <button class="work-filter-btn px-4 py-2 rounded-lg text-xs font-medium transition-all bg-slate-900 border border-slate-800 text-slate-400 hover:text-white" data-filter="dbd"><span data-lang="th">บริษัท & DBD</span><span data-lang="en">Corporate & DBD</span></button>
+          <button class="work-filter-btn px-4 py-2 rounded-lg text-xs font-medium transition-all bg-slate-900 border border-slate-800 text-slate-400 hover:text-white" data-filter="contracts"><span data-lang="th">ตรวจสัญญา</span><span data-lang="en">Contracts Review</span></button>
+          <button class="work-filter-btn px-4 py-2 rounded-lg text-xs font-medium transition-all bg-slate-900 border border-slate-800 text-slate-400 hover:text-white" data-filter="translation"><span data-lang="th">แปลเอกสาร & รับรอง</span><span data-lang="en">Translation & Notary</span></button>
+          <button class="work-filter-btn px-4 py-2 rounded-lg text-xs font-medium transition-all bg-slate-900 border border-slate-800 text-slate-400 hover:text-white" data-filter="boi"><span data-lang="th">BOI & กำกับดูแล</span><span data-lang="en">BOI & Regulatory</span></button>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="work-grid">
           <div class="work-item bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-blue-500/50 transition-all flex flex-col justify-between group" data-category="dbd">
             <div class="space-y-3">
               <div class="w-10 h-10 rounded-xl bg-blue-950 border border-blue-800/80 text-blue-400 flex items-center justify-center font-bold">01</div>
-              <h3 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">Department of Business Development and The Revenue Department</h3>
-              <p class="text-xs text-slate-400 leading-relaxed">DBD(กรมพัฒนาธุรกิจการค้า) จัดเตรียมเอกสารและยื่นคำขอจดทะเบียนหนังสือบริคณห์สนธิ แก้ไขเปลี่ยนแปลงกรรมการ อำนาจกรรมการ เพิ่มทุน แก้ไขข้อบังคับบริษัท ตลอดจน RD(กรมสรรพากร) การยื่นจด VAT เลิกกิจการ ยื่นแก้ไขประเภทธุรกิจและข้อบังคับ</p>
+              <h3 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors"><span data-lang="th">กรมพัฒนาธุรกิจการค้า และกรมสรรพากร</span><span data-lang="en">Department of Business Development and The Revenue Department</span></h3>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                <span data-lang="th">DBD(กรมพัฒนาธุรกิจการค้า) จัดเตรียมเอกสารและยื่นคำขอจดทะเบียนหนังสือบริคณห์สนธิ แก้ไขเปลี่ยนแปลงกรรมการ อำนาจกรรมการ เพิ่มทุน แก้ไขข้อบังคับบริษัท ตลอดจน RD(กรมสรรพากร) การยื่นจด VAT เลิกกิจการ ยื่นแก้ไขประเภทธุรกิจและข้อบังคับ</span>
+                <span data-lang="en">DBD (Department of Business Development): preparing and filing registration of the Memorandum of Association, changes of directors and director authority, capital increases, and amendments to company regulations. RD (Revenue Department): VAT registration, business dissolution, and amendments to business type and regulations.</span>
+              </p>
             </div>
-            <button onclick="openModal('modal-dbd')" class="mt-6 w-full py-2.5 rounded-lg bg-slate-950 hover:bg-blue-600 text-slate-300 hover:text-white text-xs font-semibold border border-slate-800 transition-all">รายละเอียดการดำเนินการ →</button>
+            <button onclick="openModal('modal-dbd')" class="mt-6 w-full py-2.5 rounded-lg bg-slate-950 hover:bg-blue-600 text-slate-300 hover:text-white text-xs font-semibold border border-slate-800 transition-all"><span data-lang="th">รายละเอียดการดำเนินการ →</span><span data-lang="en">View Details →</span></button>
           </div>
 
           <div class="work-item bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-blue-500/50 transition-all flex flex-col justify-between group" data-category="contracts">
             <div class="space-y-3">
               <div class="w-10 h-10 rounded-xl bg-blue-950 border border-blue-800/80 text-blue-400 flex items-center justify-center font-bold">02</div>
-              <h3 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">ร่างและตรวจสัญญาธุรกิจ 2 ภาษา</h3>
-              <p class="text-xs text-slate-400 leading-relaxed">ยกร่างและสอบทานสัญญากู้ยืมเงิน สัญญาจ้างแรงงาน สัญญาเช่า และสัญญาซื้อขาย ทั้งภาษาไทยและภาษาอังกฤษ</p>
+              <h3 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors"><span data-lang="th">ร่างและตรวจสัญญาธุรกิจ 2 ภาษา</span><span data-lang="en">Bilingual Business Contract Drafting & Review</span></h3>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                <span data-lang="th">ยกร่างและสอบทานสัญญากู้ยืมเงิน สัญญาจ้างแรงงาน สัญญาเช่า และสัญญาซื้อขาย ทั้งภาษาไทยและภาษาอังกฤษ</span>
+                <span data-lang="en">Drafting and reviewing loan agreements, employment contracts, lease agreements, and sale and purchase agreements, in both Thai and English.</span>
+              </p>
             </div>
-            <button onclick="openModal('modal-contracts')" class="mt-6 w-full py-2.5 rounded-lg bg-slate-950 hover:bg-blue-600 text-slate-300 hover:text-white text-xs font-semibold border border-slate-800 transition-all">รายละเอียดการดำเนินการ →</button>
+            <button onclick="openModal('modal-contracts')" class="mt-6 w-full py-2.5 rounded-lg bg-slate-950 hover:bg-blue-600 text-slate-300 hover:text-white text-xs font-semibold border border-slate-800 transition-all"><span data-lang="th">รายละเอียดการดำเนินการ →</span><span data-lang="en">View Details →</span></button>
           </div>
 
           <div class="work-item bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-blue-500/50 transition-all flex flex-col justify-between group" data-category="translation">
             <div class="space-y-3">
               <div class="w-10 h-10 rounded-xl bg-blue-950 border border-blue-800/80 text-blue-400 flex items-center justify-center font-bold">03</div>
-              <h3 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">Legal Documents & Articles of Association Translation</h3>
-              <p class="text-xs text-slate-400 leading-relaxed">แปลสัญญาต่างๆ เอกสารทางธุรกิจหนังสือรับรองบริษัท ข้อบังคับบริษัท ทั้งภาษาไทย-อังกฤษ ถูกต้องตามหลักกฎหมาย</p>
+              <h3 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors"><span data-lang="th">แปลเอกสารกฎหมายและข้อบังคับบริษัท</span><span data-lang="en">Legal Documents & Articles of Association Translation</span></h3>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                <span data-lang="th">แปลสัญญาต่างๆ เอกสารทางธุรกิจหนังสือรับรองบริษัท ข้อบังคับบริษัท ทั้งภาษาไทย-อังกฤษ ถูกต้องตามหลักกฎหมาย</span>
+                <span data-lang="en">Translating contracts, business documents, company affidavits, and company regulations (Articles of Association) between Thai and English with legal accuracy.</span>
+              </p>
             </div>
-            <button onclick="openModal('modal-translation')" class="mt-6 w-full py-2.5 rounded-lg bg-slate-950 hover:bg-blue-600 text-slate-300 hover:text-white text-xs font-semibold border border-slate-800 transition-all">รายละเอียดการดำเนินการ →</button>
+            <button onclick="openModal('modal-translation')" class="mt-6 w-full py-2.5 rounded-lg bg-slate-950 hover:bg-blue-600 text-slate-300 hover:text-white text-xs font-semibold border border-slate-800 transition-all"><span data-lang="th">รายละเอียดการดำเนินการ →</span><span data-lang="en">View Details →</span></button>
           </div>
 
           <div class="work-item bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-blue-500/50 transition-all flex flex-col justify-between group" data-category="translation">
             <div class="space-y-3">
               <div class="w-10 h-10 rounded-xl bg-blue-950 border border-blue-800/80 text-blue-400 flex items-center justify-center font-bold">04</div>
-              <h3 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">Legalization, Notarial Services & Embassy Attestation</h3>
-              <p class="text-xs text-slate-400 leading-relaxed">บริการรับรองเอกสารส่วนตัว เช่นสำเนาบัตรประชาชน ใบสูติบัตร ใบมรณะบัตร และเอกสารทางธุรกิจ เช่นหนังสือรับรองบริษัท สัญญาต่างๆ หนังสือมอบอำนาจ และรับรองลายมือชื่อ Notarial Services เพื่อใช้ยื่นกรมการกงสุล และการติดต่อสถานทูตที่จะนำเอกสารไปใช้งาน</p>
+              <h3 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors"><span data-lang="th">รับรองนิติกรณ์ รับรองเอกสาร และรับรองเอกสารสถานทูต</span><span data-lang="en">Legalization, Notarial Services & Embassy Attestation</span></h3>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                <span data-lang="th">บริการรับรองเอกสารส่วนตัว เช่นสำเนาบัตรประชาชน ใบสูติบัตร ใบมรณะบัตร และเอกสารทางธุรกิจ เช่นหนังสือรับรองบริษัท สัญญาต่างๆ หนังสือมอบอำนาจ และรับรองลายมือชื่อ Notarial Services เพื่อใช้ยื่นกรมการกงสุล และการติดต่อสถานทูตที่จะนำเอกสารไปใช้งาน</span>
+                <span data-lang="en">Certifying personal documents such as ID card copies, birth certificates, and death certificates, as well as business documents such as company affidavits, contracts, and powers of attorney, plus signature notarization for submission to the Department of Consular Affairs and coordination with embassies where the documents will be used.</span>
+              </p>
             </div>
-            <button onclick="openModal('modal-notary')" class="mt-6 w-full py-2.5 rounded-lg bg-slate-950 hover:bg-blue-600 text-slate-300 hover:text-white text-xs font-semibold border border-slate-800 transition-all">รายละเอียดการดำเนินการ →</button>
+            <button onclick="openModal('modal-notary')" class="mt-6 w-full py-2.5 rounded-lg bg-slate-950 hover:bg-blue-600 text-slate-300 hover:text-white text-xs font-semibold border border-slate-800 transition-all"><span data-lang="th">รายละเอียดการดำเนินการ →</span><span data-lang="en">View Details →</span></button>
           </div>
 
           <div class="work-item bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-blue-500/50 transition-all flex flex-col justify-between group" data-category="boi">
             <div class="space-y-3">
               <div class="w-10 h-10 rounded-xl bg-blue-950 border border-blue-800/80 text-blue-400 flex items-center justify-center font-bold">05</div>
-              <h3 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">BOI, FBL & Work Permit / Visa</h3>
-              <p class="text-xs text-slate-400 leading-relaxed">ยื่นขอใบอนุญาตประกอบธุรกิจของคนต่างด้าว (FBL) การส่งเสริมการลงทุน BOI และขอ Work Permit/Non-B Visa สำหรับต่างชาติ</p>
+              <h3 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors"><span data-lang="th">BOI, FBL และใบอนุญาตทำงาน/วีซ่า</span><span data-lang="en">BOI, FBL & Work Permit / Visa</span></h3>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                <span data-lang="th">ยื่นขอใบอนุญาตประกอบธุรกิจของคนต่างด้าว (FBL) การส่งเสริมการลงทุน BOI และขอ Work Permit/Non-B Visa สำหรับต่างชาติ</span>
+                <span data-lang="en">Applying for a Foreign Business License (FBL), BOI investment promotion, and Work Permit/Non-B Visa applications for foreign nationals.</span>
+              </p>
             </div>
-            <button onclick="openModal('modal-boi')" class="mt-6 w-full py-2.5 rounded-lg bg-slate-950 hover:bg-blue-600 text-slate-300 hover:text-white text-xs font-semibold border border-slate-800 transition-all">รายละเอียดการดำเนินการ →</button>
+            <button onclick="openModal('modal-boi')" class="mt-6 w-full py-2.5 rounded-lg bg-slate-950 hover:bg-blue-600 text-slate-300 hover:text-white text-xs font-semibold border border-slate-800 transition-all"><span data-lang="th">รายละเอียดการดำเนินการ →</span><span data-lang="en">View Details →</span></button>
           </div>
 
           <div class="work-item bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-blue-500/50 transition-all flex flex-col justify-between group" data-category="contracts">
             <div class="space-y-3">
               <div class="w-10 h-10 rounded-xl bg-blue-950 border border-blue-800/80 text-blue-400 flex items-center justify-center font-bold">06</div>
-              <h3 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">ให้คำปรึกษากฎหมายแพ่ง อาญา แรงงาน และธุรกิจ</h3>
-              <p class="text-xs text-slate-400 leading-relaxed">ให้คำปรึกษาข้อกฎหมายพาณิชย์ กฎหมายอาญา กฎหมายแรงงาน การบริหารจัดการความเสี่ยงองค์กร และการประสานงานภาครัฐ และข้อพิพาทต่างๆ</p>
+              <h3 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors"><span data-lang="th">ให้คำปรึกษากฎหมายแพ่ง อาญา แรงงาน และธุรกิจ</span><span data-lang="en">Civil, Criminal, Labor & Business Law Advisory</span></h3>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                <span data-lang="th">ให้คำปรึกษาข้อกฎหมายพาณิชย์ กฎหมายอาญา กฎหมายแรงงาน การบริหารจัดการความเสี่ยงองค์กร และการประสานงานภาครัฐ และข้อพิพาทต่างๆ</span>
+                <span data-lang="en">Advisory on commercial law, criminal law, labor law, corporate risk management, government liaison, and various disputes.</span>
+              </p>
             </div>
-            <button onclick="openModal('modal-general')" class="mt-6 w-full py-2.5 rounded-lg bg-slate-950 hover:bg-blue-600 text-slate-300 hover:text-white text-xs font-semibold border border-slate-800 transition-all">รายละเอียดการดำเนินการ →</button>
+            <button onclick="openModal('modal-general')" class="mt-6 w-full py-2.5 rounded-lg bg-slate-950 hover:bg-blue-600 text-slate-300 hover:text-white text-xs font-semibold border border-slate-800 transition-all"><span data-lang="th">รายละเอียดการดำเนินการ →</span><span data-lang="en">View Details →</span></button>
           </div>
         </div>
       </div>
@@ -270,8 +303,8 @@
     <section id="experience" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-950 border-b border-slate-800/60">
       <div class="max-w-4xl mx-auto space-y-12">
         <div class="text-center space-y-2">
-          <h2 class="text-xs font-bold text-blue-400 uppercase tracking-widest">Career Journey</h2>
-          <p class="text-3xl font-bold text-white">ประสบการณ์ทำงานและผลงานหลัก</p>
+          <h2 class="text-xs font-bold text-blue-400 uppercase tracking-widest"><span data-lang="th">เส้นทางอาชีพ</span><span data-lang="en">Career Journey</span></h2>
+          <p class="text-3xl font-bold text-white"><span data-lang="th">ประสบการณ์ทำงานและผลงานหลัก</span><span data-lang="en">Work Experience & Key Achievements</span></p>
         </div>
 
         <div class="relative border-l-2 border-slate-800 ml-4 sm:ml-8 space-y-10">
@@ -280,19 +313,19 @@
             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-4">
               <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-3">
                 <div>
-                  <span class="text-xs font-semibold text-blue-400 uppercase">Present Position</span>
+                  <span class="text-xs font-semibold text-blue-400 uppercase"><span data-lang="th">ตำแหน่งปัจจุบัน</span><span data-lang="en">Present Position</span></span>
                   <h3 class="text-xl font-bold text-white">Legal Consultant (ที่ปรึกษากฎหมาย)</h3>
                   <p class="text-sm text-slate-300">Matthew Anawat Legal Advisor (Thailand) Co., Ltd.</p>
                 </div>
-                <span class="px-3 py-1 rounded-full bg-blue-950 text-blue-300 text-xs font-semibold border border-blue-800">October 2024 — Present</span>
+                <span class="px-3 py-1 rounded-full bg-blue-950 text-blue-300 text-xs font-semibold border border-blue-800"><span data-lang="th">ตุลาคม 2567 — ปัจจุบัน</span><span data-lang="en">October 2024 — Present</span></span>
               </div>
 
               <ul class="space-y-2 text-xs text-slate-300 leading-relaxed list-disc list-inside">
-                <li>ยื่นจดทะเบียนนิติบุคคล หนังสือบริคณห์สนธิ แก้ไขเปลี่ยนแปลงกรรมการ อำนาจ และเพิ่มทุนกับกรมพัฒนาธุรกิจการค้า (DBD) และกรมสรรพากร</li>
-                <li>ตรวจและร่างสัญญาธุรกิจ 2 ภาษา (ไทย-อังกฤษ) อาทิ สัญญากู้ยืม สัญญาจ้างงาน สัญญาเช่า และสัญญาซื้อขาย</li>
-                <li>แปลสัญญา หนังสือรับรองบริษัท และข้อบังคับบริษัท (Articles of Association)</li>
-                <li>ดำเนินการ Notarial Services ยื่นรับรองเอกสาร ลายมือชื่อ ที่กรมการกงสุล กระทรวงการต่างประเทศ และสถานทูตต่าง ๆ</li>
-                <li>ให้คำปรึกษากฎหมายแพ่ง อาญา แรงงาน ขอ Work Permit/Visa, Foreign Business License (FBL) และ BOI</li>
+                <li><span data-lang="th">ยื่นจดทะเบียนนิติบุคคล หนังสือบริคณห์สนธิ แก้ไขเปลี่ยนแปลงกรรมการ อำนาจ และเพิ่มทุนกับกรมพัฒนาธุรกิจการค้า (DBD) และกรมสรรพากร</span><span data-lang="en">Registering companies and Memoranda of Association, and filing changes of directors, authority, and capital increases with the Department of Business Development (DBD) and the Revenue Department</span></li>
+                <li><span data-lang="th">ตรวจและร่างสัญญาธุรกิจ 2 ภาษา (ไทย-อังกฤษ) อาทิ สัญญากู้ยืม สัญญาจ้างงาน สัญญาเช่า และสัญญาซื้อขาย</span><span data-lang="en">Reviewing and drafting bilingual (Thai-English) business contracts, including loan agreements, employment contracts, lease agreements, and sale and purchase agreements</span></li>
+                <li><span data-lang="th">แปลสัญญา หนังสือรับรองบริษัท และข้อบังคับบริษัท (Articles of Association)</span><span data-lang="en">Translating contracts, company affidavits, and company regulations (Articles of Association)</span></li>
+                <li><span data-lang="th">ดำเนินการ Notarial Services ยื่นรับรองเอกสาร ลายมือชื่อ ที่กรมการกงสุล กระทรวงการต่างประเทศ และสถานทูตต่าง ๆ</span><span data-lang="en">Handling notarial services, certifying documents and signatures at the Department of Consular Affairs, the Ministry of Foreign Affairs, and various embassies</span></li>
+                <li><span data-lang="th">ให้คำปรึกษากฎหมายแพ่ง อาญา แรงงาน ขอ Work Permit/Visa, Foreign Business License (FBL) และ BOI</span><span data-lang="en">Advising on civil, criminal, and labor law; handling Work Permit/Visa, Foreign Business License (FBL), and BOI applications</span></li>
               </ul>
             </div>
           </div>
@@ -302,7 +335,7 @@
             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-3">
               <div class="flex items-center justify-between border-b border-slate-800 pb-3">
                 <div>
-                  <span class="text-xs font-semibold text-slate-400 uppercase">Education Degree</span>
+                  <span class="text-xs font-semibold text-slate-400 uppercase"><span data-lang="th">วุฒิการศึกษา</span><span data-lang="en">Education Degree</span></span>
                   <h3 class="text-lg font-bold text-white">Bachelor of Laws (LL.B.)</h3>
                   <p class="text-sm text-slate-300">School of Law, Mae Fah Luang University</p>
                 </div>
@@ -316,30 +349,30 @@
     <section id="credentials" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50 border-b border-slate-800/60">
       <div class="max-w-6xl mx-auto space-y-12">
         <div class="text-center space-y-2">
-          <h2 class="text-xs font-bold text-blue-400 uppercase tracking-widest">Qualifications</h2>
-          <p class="text-3xl font-bold text-white">ใบอนุญาตและทักษะความสามารถ</p>
+          <h2 class="text-xs font-bold text-blue-400 uppercase tracking-widest"><span data-lang="th">คุณวุฒิ</span><span data-lang="en">Qualifications</span></h2>
+          <p class="text-3xl font-bold text-white"><span data-lang="th">ใบอนุญาตและทักษะความสามารถ</span><span data-lang="en">Licenses & Skills</span></p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-center space-y-3">
             <div class="w-12 h-12 rounded-xl bg-blue-950 border border-blue-800 text-blue-400 mx-auto flex items-center justify-center font-bold">LAW</div>
             <h3 class="text-base font-bold text-white">Thai Lawyer's License</h3>
-            <p class="text-xs text-slate-400">ใบอนุญาตให้เป็นทนายความ (Bar License)</p>
+            <p class="text-xs text-slate-400"><span data-lang="th">ใบอนุญาตให้เป็นทนายความ (Bar License)</span><span data-lang="en">Licensed to practice law (Bar License)</span></p>
           </div>
           <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-center space-y-3">
             <div class="w-12 h-12 rounded-xl bg-blue-950 border border-blue-800 text-blue-400 mx-auto flex items-center justify-center font-bold text-lg">795</div>
             <h3 class="text-base font-bold text-white">TOEIC Official Score</h3>
-            <p class="text-xs text-slate-400">สื่อสาร และร่างนิติกรรมสัญญาภาษาอังกฤษ</p>
+            <p class="text-xs text-slate-400"><span data-lang="th">สื่อสาร และร่างนิติกรรมสัญญาภาษาอังกฤษ</span><span data-lang="en">English communication and legal/contract drafting proficiency</span></p>
           </div>
           <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-center space-y-3">
             <div class="w-12 h-12 rounded-xl bg-blue-950 border border-blue-800 text-blue-400 mx-auto flex items-center justify-center font-bold">LL.B.</div>
             <h3 class="text-base font-bold text-white">LL.B. Mae Fah Luang</h3>
-            <p class="text-xs text-slate-400">นิติศาสตรบัณฑิต มหาวิทยาลัยแม่ฟ้าหลวง</p>
+            <p class="text-xs text-slate-400"><span data-lang="th">นิติศาสตรบัณฑิต มหาวิทยาลัยแม่ฟ้าหลวง</span><span data-lang="en">Bachelor of Laws, Mae Fah Luang University</span></p>
           </div>
           <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-center space-y-3">
             <div class="w-12 h-12 rounded-xl bg-blue-950 border border-blue-800 text-blue-400 mx-auto flex items-center justify-center font-bold">NOTARY</div>
             <h3 class="text-base font-bold text-white">Notarial Services</h3>
-            <p class="text-xs text-slate-400">รับรองกงสุล & ประสานงานสถานทูต</p>
+            <p class="text-xs text-slate-400"><span data-lang="th">รับรองกงสุล & ประสานงานสถานทูต</span><span data-lang="en">Consular certification & embassy coordination</span></p>
           </div>
         </div>
       </div>
@@ -348,22 +381,22 @@
     <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-950">
       <div class="max-w-6xl mx-auto space-y-12">
         <div class="text-center space-y-2">
-          <h2 class="text-xs font-bold text-blue-400 uppercase tracking-widest">Get In Touch</h2>
-          <p class="text-3xl font-bold text-white">ช่องทางการติดต่อ</p>
+          <h2 class="text-xs font-bold text-blue-400 uppercase tracking-widest"><span data-lang="th">ติดต่อเรา</span><span data-lang="en">Get In Touch</span></h2>
+          <p class="text-3xl font-bold text-white"><span data-lang="th">ช่องทางการติดต่อ</span><span data-lang="en">Contact Channels</span></p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div class="lg:col-span-5 space-y-4">
             <a href="tel:+66623092007" class="block p-5 bg-slate-900 border border-slate-800 hover:border-blue-500/50 rounded-2xl transition-all">
-              <span class="text-xs text-slate-400 font-medium">โทรศัพท์ (Phone)</span>
+              <span class="text-xs text-slate-400 font-medium"><span data-lang="th">โทรศัพท์</span><span data-lang="en">Phone</span></span>
               <p class="text-lg font-bold text-white">+66 62-309-2007</p>
             </a>
             <a href="mailto:Nitiphum.kp@gmail.com" class="block p-5 bg-slate-900 border border-slate-800 hover:border-blue-500/50 rounded-2xl transition-all">
-              <span class="text-xs text-slate-400 font-medium">อีเมล (Email)</span>
+              <span class="text-xs text-slate-400 font-medium"><span data-lang="th">อีเมล</span><span data-lang="en">Email</span></span>
               <p class="text-lg font-bold text-white">Nitiphum.kp@gmail.com</p>
             </a>
             <div class="p-5 bg-slate-900 border border-slate-800 rounded-2xl">
-              <span class="text-xs text-slate-400 font-medium">สถานที่ปฏิบัติงาน (Location)</span>
+              <span class="text-xs text-slate-400 font-medium"><span data-lang="th">สถานที่ปฏิบัติงาน</span><span data-lang="en">Location</span></span>
               <p class="text-base font-bold text-white">Bangkok, Thailand</p>
             </div>
           </div>
@@ -372,53 +405,53 @@
             <form id="contact-form" class="space-y-4">
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label class="text-xs font-semibold text-slate-300">ชื่อ-นามสกุล / ชื่อองค์กร *</label>
-                  <input type="text" required placeholder="คุณนิติ / บริษัท ตัวอย่าง จำกัด" class="w-full mt-1 px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-slate-100 text-sm focus:border-blue-500 focus:outline-none">
+                  <label class="text-xs font-semibold text-slate-300"><span data-lang="th">ชื่อ-นามสกุล / ชื่อองค์กร *</span><span data-lang="en">Full Name / Organization *</span></label>
+                  <input type="text" required data-placeholder-th="คุณนิติ / บริษัท ตัวอย่าง จำกัด" data-placeholder-en="Mr. Niti / Example Co., Ltd." placeholder="คุณนิติ / บริษัท ตัวอย่าง จำกัด" class="w-full mt-1 px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-slate-100 text-sm focus:border-blue-500 focus:outline-none">
                 </div>
                 <div>
-                  <label class="text-xs font-semibold text-slate-300">เบอร์โทรศัพท์ *</label>
+                  <label class="text-xs font-semibold text-slate-300"><span data-lang="th">เบอร์โทรศัพท์ *</span><span data-lang="en">Phone Number *</span></label>
                   <input type="tel" required placeholder="081-XXX-XXXX" class="w-full mt-1 px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-slate-100 text-sm focus:border-blue-500 focus:outline-none">
                 </div>
               </div>
               <div>
-                <label class="text-xs font-semibold text-slate-300">หัวข้อที่ปรึกษา</label>
-                <select class="w-full mt-1 px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-slate-100 text-sm focus:border-blue-500 focus:outline-none">
-                  <optgroup label="จดทะเบียนธุรกิจ & ภาษี (Corporate Registration & Tax)">
-                    <option>จดทะเบียนกรมพัฒนาธุรกิจการค้า (DBD)</option>
-                    <option>จดทะเบียนต่างๆ กรมสรรพากร (RD)</option>
+                <label class="text-xs font-semibold text-slate-300"><span data-lang="th">หัวข้อที่ปรึกษา</span><span data-lang="en">Consultation Topic</span></label>
+                <select id="topic-select" class="w-full mt-1 px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-slate-100 text-sm focus:border-blue-500 focus:outline-none">
+                  <optgroup data-th="จดทะเบียนธุรกิจ & ภาษี" data-en="Corporate Registration & Tax" label="จดทะเบียนธุรกิจ & ภาษี">
+                    <option data-th="จดทะเบียนกรมพัฒนาธุรกิจการค้า (DBD)" data-en="Department of Business Development (DBD) Registration">จดทะเบียนกรมพัฒนาธุรกิจการค้า (DBD)</option>
+                    <option data-th="จดทะเบียนต่างๆ กรมสรรพากร (RD)" data-en="Revenue Department (RD) Filings">จดทะเบียนต่างๆ กรมสรรพากร (RD)</option>
                   </optgroup>
-                  <optgroup label="สัญญาและงานแปลเอกสาร (Contracts & Translation)">
-                    <option>ร่าง / ตรวจสัญญาทางธุรกิจ (กู้ยืม, จ้างงาน, เช่า, ซื้อขาย)</option>
-                    <option>แปลเอกสารกฎหมายและเอกสารธุรกิจ ไทย-อังกฤษ</option>
+                  <optgroup data-th="สัญญาและงานแปลเอกสาร" data-en="Contracts & Translation" label="สัญญาและงานแปลเอกสาร">
+                    <option data-th="ร่าง / ตรวจสัญญาทางธุรกิจ (กู้ยืม, จ้างงาน, เช่า, ซื้อขาย)" data-en="Drafting / Reviewing Business Contracts (Loan, Employment, Lease, Sale)">ร่าง / ตรวจสัญญาทางธุรกิจ (กู้ยืม, จ้างงาน, เช่า, ซื้อขาย)</option>
+                    <option data-th="แปลเอกสารกฎหมายและเอกสารธุรกิจ ไทย-อังกฤษ" data-en="Thai-English Legal & Business Document Translation">แปลเอกสารกฎหมายและเอกสารธุรกิจ ไทย-อังกฤษ</option>
                   </optgroup>
-                  <optgroup label="รับรองเอกสารและนิติกรณ์ (Notarial & Legalization)">
-                    <option>รับรองสำเนาเอกสารส่วนบุคคล (บัตรประชาชน, สูติบัตร, มรณะบัตร)</option>
-                    <option>รับรองสำเนาเอกสารธุรกิจ (หนังสือรับรองบริษัท, สัญญา, หนังสือมอบอำนาจ)</option>
-                    <option>รับรองลายมือชื่อ (Notary Public)</option>
-                    <option>ประสานงานกรมการกงสุลและสถานทูต (Legalization)</option>
+                  <optgroup data-th="รับรองเอกสารและนิติกรณ์" data-en="Notarial & Legalization" label="รับรองเอกสารและนิติกรณ์">
+                    <option data-th="รับรองสำเนาเอกสารส่วนบุคคล (บัตรประชาชน, สูติบัตร, มรณะบัตร)" data-en="Personal Document Certification (ID Card, Birth/Death Certificate)">รับรองสำเนาเอกสารส่วนบุคคล (บัตรประชาชน, สูติบัตร, มรณะบัตร)</option>
+                    <option data-th="รับรองสำเนาเอกสารธุรกิจ (หนังสือรับรองบริษัท, สัญญา, หนังสือมอบอำนาจ)" data-en="Business Document Certification (Company Affidavit, Contracts, Power of Attorney)">รับรองสำเนาเอกสารธุรกิจ (หนังสือรับรองบริษัท, สัญญา, หนังสือมอบอำนาจ)</option>
+                    <option data-th="รับรองลายมือชื่อ (Notary Public)" data-en="Signature Certification (Notary Public)">รับรองลายมือชื่อ (Notary Public)</option>
+                    <option data-th="ประสานงานกรมการกงสุลและสถานทูต (Legalization)" data-en="Department of Consular Affairs & Embassy Liaison (Legalization)">ประสานงานกรมการกงสุลและสถานทูต (Legalization)</option>
                   </optgroup>
-                  <optgroup label="ใบอนุญาตและการลงทุนต่างชาติ (Work Permit & Investment)">
-                    <option>ขอใบอนุญาตทำงาน (Work Permit) / วีซ่าธุรกิจ</option>
-                    <option>ใบอนุญาตประกอบธุรกิจของคนต่างด้าว (FBL)</option>
-                    <option>ขอรับการส่งเสริมการลงทุน (BOI)</option>
+                  <optgroup data-th="ใบอนุญาตและการลงทุนต่างชาติ" data-en="Work Permit & Investment" label="ใบอนุญาตและการลงทุนต่างชาติ">
+                    <option data-th="ขอใบอนุญาตทำงาน (Work Permit) / วีซ่าธุรกิจ" data-en="Work Permit / Business Visa Application">ขอใบอนุญาตทำงาน (Work Permit) / วีซ่าธุรกิจ</option>
+                    <option data-th="ใบอนุญาตประกอบธุรกิจของคนต่างด้าว (FBL)" data-en="Foreign Business License (FBL)">ใบอนุญาตประกอบธุรกิจของคนต่างด้าว (FBL)</option>
+                    <option data-th="ขอรับการส่งเสริมการลงทุน (BOI)" data-en="BOI Investment Promotion">ขอรับการส่งเสริมการลงทุน (BOI)</option>
                   </optgroup>
-                  <optgroup label="ที่ปรึกษากฎหมายทั่วไป (General Legal Advisory)">
-                    <option>กฎหมายแพ่งและพาณิชย์ / ข้อพิพาททางธุรกิจ</option>
-                    <option>กฎหมายอาญา</option>
-                    <option>กฎหมายแรงงาน</option>
-                    <option>การบริหารความเสี่ยงองค์กรและประสานงานภาครัฐ</option>
+                  <optgroup data-th="ที่ปรึกษากฎหมายทั่วไป" data-en="General Legal Advisory" label="ที่ปรึกษากฎหมายทั่วไป">
+                    <option data-th="กฎหมายแพ่งและพาณิชย์ / ข้อพิพาททางธุรกิจ" data-en="Civil & Commercial Law / Business Disputes">กฎหมายแพ่งและพาณิชย์ / ข้อพิพาททางธุรกิจ</option>
+                    <option data-th="กฎหมายอาญา" data-en="Criminal Law">กฎหมายอาญา</option>
+                    <option data-th="กฎหมายแรงงาน" data-en="Labor Law">กฎหมายแรงงาน</option>
+                    <option data-th="การบริหารความเสี่ยงองค์กรและประสานงานภาครัฐ" data-en="Corporate Risk Management & Government Liaison">การบริหารความเสี่ยงองค์กรและประสานงานภาครัฐ</option>
                   </optgroup>
-                  <optgroup label="อื่นๆ (Other)">
-                    <option>สอบถามข้อมูลเพิ่มเติม / เรื่องอื่นๆ</option>
+                  <optgroup data-th="อื่นๆ" data-en="Other" label="อื่นๆ">
+                    <option data-th="สอบถามข้อมูลเพิ่มเติม / เรื่องอื่นๆ" data-en="General Inquiry / Other">สอบถามข้อมูลเพิ่มเติม / เรื่องอื่นๆ</option>
                   </optgroup>
                 </select>
               </div>
               <div>
-                <label class="text-xs font-semibold text-slate-300">รายละเอียดสังเขป</label>
-                <textarea rows="3" placeholder="ระบุรายละเอียด..." class="w-full mt-1 px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-slate-100 text-sm focus:border-blue-500 focus:outline-none custom-scrollbar"></textarea>
+                <label class="text-xs font-semibold text-slate-300"><span data-lang="th">รายละเอียดสังเขป</span><span data-lang="en">Brief Details</span></label>
+                <textarea rows="3" data-placeholder-th="ระบุรายละเอียด..." data-placeholder-en="Please provide details..." placeholder="ระบุรายละเอียด..." class="w-full mt-1 px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-slate-100 text-sm focus:border-blue-500 focus:outline-none custom-scrollbar"></textarea>
               </div>
-              <button type="submit" class="w-full py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-all shadow-lg shadow-blue-900/30">ส่งข้อความติดต่อ</button>
-              <div id="form-status" class="hidden p-3 rounded-lg bg-blue-950 border border-blue-800 text-blue-200 text-xs text-center">บันทึกข้อมูลเรียบร้อยแล้ว จะดำเนินการติดต่อกลับโดยเร็วที่สุด</div>
+              <button type="submit" class="w-full py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-all shadow-lg shadow-blue-900/30"><span data-lang="th">ส่งข้อความติดต่อ</span><span data-lang="en">Send Message</span></button>
+              <div id="form-status" class="hidden p-3 rounded-lg bg-blue-950 border border-blue-800 text-blue-200 text-xs text-center"><span data-lang="th">บันทึกข้อมูลเรียบร้อยแล้ว จะดำเนินการติดต่อกลับโดยเร็วที่สุด</span><span data-lang="en">Your information has been received. We will get back to you as soon as possible.</span></div>
             </form>
           </div>
         </div>
@@ -429,7 +462,7 @@
   <footer class="py-8 bg-slate-950 border-t border-slate-800 text-center text-xs text-slate-400">
     <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
       <p>© 2026 Nitiphum Kongphet. All rights reserved.</p>
-      <p>Business Legal Consultant & Bar Licensed Attorney</p>
+      <p><span data-lang="th">ที่ปรึกษากฎหมายธุรกิจ และทนายความที่ได้รับใบอนุญาต</span><span data-lang="en">Business Legal Consultant & Bar Licensed Attorney</span></p>
     </div>
   </footer>
 
@@ -437,54 +470,72 @@
   <div id="modal-dbd" class="modal-backdrop fixed inset-0 bg-slate-950/80 glass-nav z-50 hidden items-center justify-center p-4">
     <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 space-y-4 relative">
       <button onclick="closeModal('modal-dbd')" class="absolute top-4 right-4 text-slate-400 hover:text-white">✕</button>
-      <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">Department of Business Development and The Revenue Department</h3>
-      <p class="text-xs text-slate-300 leading-relaxed">- จัดทำและยื่นเอกสารขอจดทะเบียนจัดตั้งบริษัทจำกัด/ห้างหุ้นส่วน<br>- แก้ไขหนังสือบริคณห์สนธิ กรรมการ อำนาจ เพิ่มทุน<br>- ยื่นจดภาษีมูลค่าเพิ่ม (VAT)</p>
-      <div class="text-right"><button onclick="closeModal('modal-dbd')" class="px-4 py-2 rounded-lg bg-blue-600 text-white text-xs font-semibold">ปิด</button></div>
+      <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2"><span data-lang="th">กรมพัฒนาธุรกิจการค้า และกรมสรรพากร</span><span data-lang="en">Department of Business Development and The Revenue Department</span></h3>
+      <p class="text-xs text-slate-300 leading-relaxed">
+        <span data-lang="th">- จัดทำและยื่นเอกสารขอจดทะเบียนจัดตั้งบริษัทจำกัด/ห้างหุ้นส่วน<br>- แก้ไขหนังสือบริคณห์สนธิ กรรมการ อำนาจ เพิ่มทุน<br>- ยื่นจดภาษีมูลค่าเพิ่ม (VAT)</span>
+        <span data-lang="en">- Preparing and filing applications to register limited companies/partnerships<br>- Amending the Memorandum of Association, directors, authority, and capital<br>- Filing VAT registration</span>
+      </p>
+      <div class="text-right"><button onclick="closeModal('modal-dbd')" class="px-4 py-2 rounded-lg bg-blue-600 text-white text-xs font-semibold"><span data-lang="th">ปิด</span><span data-lang="en">Close</span></button></div>
     </div>
   </div>
 
   <div id="modal-contracts" class="modal-backdrop fixed inset-0 bg-slate-950/80 glass-nav z-50 hidden items-center justify-center p-4">
     <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 space-y-4 relative">
       <button onclick="closeModal('modal-contracts')" class="absolute top-4 right-4 text-slate-400 hover:text-white">✕</button>
-      <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">ร่างและตรวจสัญญาธุรกิจ</h3>
-      <p class="text-xs text-slate-300 leading-relaxed">- ตรวจสัญญากู้ยืม จ้างงาน เช่า ซื้อขาย 2 ภาษา (ไทย-อังกฤษ)</p>
-      <div class="text-right"><button onclick="closeModal('modal-contracts')" class="px-4 py-2 rounded-lg bg-blue-600 text-white text-xs font-semibold">ปิด</button></div>
+      <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2"><span data-lang="th">ร่างและตรวจสัญญาธุรกิจ</span><span data-lang="en">Business Contract Drafting & Review</span></h3>
+      <p class="text-xs text-slate-300 leading-relaxed">
+        <span data-lang="th">- ตรวจสัญญากู้ยืม จ้างงาน เช่า ซื้อขาย 2 ภาษา (ไทย-อังกฤษ)</span>
+        <span data-lang="en">- Reviewing loan, employment, lease, and sale agreements bilingually (Thai-English)</span>
+      </p>
+      <div class="text-right"><button onclick="closeModal('modal-contracts')" class="px-4 py-2 rounded-lg bg-blue-600 text-white text-xs font-semibold"><span data-lang="th">ปิด</span><span data-lang="en">Close</span></button></div>
     </div>
   </div>
 
   <div id="modal-translation" class="modal-backdrop fixed inset-0 bg-slate-950/80 glass-nav z-50 hidden items-center justify-center p-4">
     <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 space-y-4 relative">
       <button onclick="closeModal('modal-translation')" class="absolute top-4 right-4 text-slate-400 hover:text-white">✕</button>
-      <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">แปลเอกสารกฎหมาย</h3>
-      <p class="text-xs text-slate-300 leading-relaxed">- แปลสัญญา หนังสือรับรอง และ Articles of Association</p>
-      <div class="text-right"><button onclick="closeModal('modal-translation')" class="px-4 py-2 rounded-lg bg-blue-600 text-white text-xs font-semibold">ปิด</button></div>
+      <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2"><span data-lang="th">แปลเอกสารกฎหมาย</span><span data-lang="en">Legal Document Translation</span></h3>
+      <p class="text-xs text-slate-300 leading-relaxed">
+        <span data-lang="th">- แปลสัญญา หนังสือรับรอง และ Articles of Association</span>
+        <span data-lang="en">- Translating contracts, affidavits, and Articles of Association</span>
+      </p>
+      <div class="text-right"><button onclick="closeModal('modal-translation')" class="px-4 py-2 rounded-lg bg-blue-600 text-white text-xs font-semibold"><span data-lang="th">ปิด</span><span data-lang="en">Close</span></button></div>
     </div>
   </div>
 
   <div id="modal-notary" class="modal-backdrop fixed inset-0 bg-slate-950/80 glass-nav z-50 hidden items-center justify-center p-4">
     <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 space-y-4 relative">
       <button onclick="closeModal('modal-notary')" class="absolute top-4 right-4 text-slate-400 hover:text-white">✕</button>
-      <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">Legalization, Notarial Services & Embassy Attestation</h3>
-      <p class="text-xs text-slate-300 leading-relaxed">- รับรองสำเนาที่ศาล รับรองลายมือชื่อ และติดต่อสถานทูต</p>
-      <div class="text-right"><button onclick="closeModal('modal-notary')" class="px-4 py-2 rounded-lg bg-blue-600 text-white text-xs font-semibold">ปิด</button></div>
+      <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2"><span data-lang="th">รับรองนิติกรณ์ รับรองเอกสาร และรับรองเอกสารสถานทูต</span><span data-lang="en">Legalization, Notarial Services & Embassy Attestation</span></h3>
+      <p class="text-xs text-slate-300 leading-relaxed">
+        <span data-lang="th">- รับรองสำเนาที่ศาล รับรองลายมือชื่อ และติดต่อสถานทูต</span>
+        <span data-lang="en">- Certifying document copies at courts, notarizing signatures, and liaising with embassies</span>
+      </p>
+      <div class="text-right"><button onclick="closeModal('modal-notary')" class="px-4 py-2 rounded-lg bg-blue-600 text-white text-xs font-semibold"><span data-lang="th">ปิด</span><span data-lang="en">Close</span></button></div>
     </div>
   </div>
 
   <div id="modal-boi" class="modal-backdrop fixed inset-0 bg-slate-950/80 glass-nav z-50 hidden items-center justify-center p-4">
     <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 space-y-4 relative">
       <button onclick="closeModal('modal-boi')" class="absolute top-4 right-4 text-slate-400 hover:text-white">✕</button>
-      <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">BOI, FBL & Work Permit</h3>
-      <p class="text-xs text-slate-300 leading-relaxed">- ขอ FBL, ส่งเสริมการลงทุน BOI และ Work Permit ต่างชาติ</p>
-      <div class="text-right"><button onclick="closeModal('modal-boi')" class="px-4 py-2 rounded-lg bg-blue-600 text-white text-xs font-semibold">ปิด</button></div>
+      <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2"><span data-lang="th">BOI, FBL และใบอนุญาตทำงาน</span><span data-lang="en">BOI, FBL & Work Permit</span></h3>
+      <p class="text-xs text-slate-300 leading-relaxed">
+        <span data-lang="th">- ขอ FBL, ส่งเสริมการลงทุน BOI และ Work Permit ต่างชาติ</span>
+        <span data-lang="en">- Applying for FBL, BOI investment promotion, and Work Permits for foreign nationals</span>
+      </p>
+      <div class="text-right"><button onclick="closeModal('modal-boi')" class="px-4 py-2 rounded-lg bg-blue-600 text-white text-xs font-semibold"><span data-lang="th">ปิด</span><span data-lang="en">Close</span></button></div>
     </div>
   </div>
 
   <div id="modal-general" class="modal-backdrop fixed inset-0 bg-slate-950/80 glass-nav z-50 hidden items-center justify-center p-4">
     <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 space-y-4 relative">
       <button onclick="closeModal('modal-general')" class="absolute top-4 right-4 text-slate-400 hover:text-white">✕</button>
-      <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">ที่ปรึกษากฎหมายทั่วไป</h3>
-      <p class="text-xs text-slate-300 leading-relaxed">- ให้คำปรึกษาแพ่ง อาญา แรงงาน และการจัดการความเสี่ยงองค์กร</p>
-      <div class="text-right"><button onclick="closeModal('modal-general')" class="px-4 py-2 rounded-lg bg-blue-600 text-white text-xs font-semibold">ปิด</button></div>
+      <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2"><span data-lang="th">ที่ปรึกษากฎหมายทั่วไป</span><span data-lang="en">General Legal Advisory</span></h3>
+      <p class="text-xs text-slate-300 leading-relaxed">
+        <span data-lang="th">- ให้คำปรึกษาแพ่ง อาญา แรงงาน และการจัดการความเสี่ยงองค์กร</span>
+        <span data-lang="en">- Advisory on civil, criminal, and labor law, and corporate risk management</span>
+      </p>
+      <div class="text-right"><button onclick="closeModal('modal-general')" class="px-4 py-2 rounded-lg bg-blue-600 text-white text-xs font-semibold"><span data-lang="th">ปิด</span><span data-lang="en">Close</span></button></div>
     </div>
   </div>
 
@@ -529,6 +580,51 @@
       form.reset();
       setTimeout(() => status.classList.add('hidden'), 5000);
     });
+
+    (function () {
+      var STORAGE_KEY = 'nk-portfolio-lang';
+      var body = document.body;
+      var htmlEl = document.documentElement;
+      var toggleBtns = document.querySelectorAll('.lang-toggle-btn');
+
+      function applyLang(lang) {
+        body.classList.remove('lang-th', 'lang-en');
+        body.classList.add('lang-' + lang);
+        htmlEl.setAttribute('lang', lang);
+
+        document.querySelectorAll('optgroup[data-th][data-en]').forEach(function (el) {
+          el.label = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-th');
+        });
+        document.querySelectorAll('option[data-th][data-en]').forEach(function (el) {
+          el.textContent = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-th');
+        });
+        document.querySelectorAll('[data-placeholder-th][data-placeholder-en]').forEach(function (el) {
+          el.placeholder = lang === 'en' ? el.getAttribute('data-placeholder-en') : el.getAttribute('data-placeholder-th');
+        });
+
+        toggleBtns.forEach(function (btn) {
+          var label = btn.querySelector('.lang-toggle-label');
+          if (label) label.textContent = lang === 'th' ? label.getAttribute('data-when-th') : label.getAttribute('data-when-en');
+        });
+
+        try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
+      }
+
+      var saved = 'th';
+      try {
+        var stored = localStorage.getItem(STORAGE_KEY);
+        if (stored === 'en' || stored === 'th') saved = stored;
+      } catch (e) {}
+
+      applyLang(saved);
+
+      toggleBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var current = body.classList.contains('lang-en') ? 'en' : 'th';
+          applyLang(current === 'en' ? 'th' : 'en');
+        });
+      });
+    })();
   </script>
 </body>
 </html>
